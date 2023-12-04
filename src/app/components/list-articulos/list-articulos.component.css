@@ -1,0 +1,55 @@
+table {
+    width: 100%;
+  }
+
+  :host{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  mat-form-field{
+    font-size: 14px;
+    width: 14%;
+    background-color: oldlace;
+    opacity: 80%;
+    
+    position: relative;
+
+    left: 300px ;
+
+  }
+
+  .pointer{
+    cursor: pointer;
+  }
+ 
+
+  .mat-mdc-table {
+
+    background-color: oldlace;
+    opacity: 65%;
+    
+    position: relative;
+
+    left: 300px ;
+
+  }
+
+  mat-paginator {
+
+    background-color: oldlace;
+    opacity: 65%;
+    
+    position: relative;
+
+    left: 300px ;
+  }
+
+  .botones{
+
+position: relative;
+left: 1000px;
+
+  }
+

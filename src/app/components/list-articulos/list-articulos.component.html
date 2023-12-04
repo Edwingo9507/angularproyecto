@@ -1,0 +1,98 @@
+
+<div class="botones" >
+
+<button mat-flat-button style="background-color: oldlace;" routerLink="/agregar" > AGREGAR</button>
+<button class="boton" mat-flat-button style="background-color: oldlace;" (click)="generarPDF()" > Generar Reporte</button>
+</div>
+
+<mat-form-field>
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="filter($event)"placeholder="buscar">
+  </mat-form-field>
+  
+ 
+
+  <div id="pdfcontent">
+
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort> 
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+   
+    <ng-container matColumnDef="nombreArticulo" >
+    
+      <th mat-header-cell *matHeaderCellDef mat-sort-header >Nombre   Articulo</th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreArticulo}} </td>
+    
+    </ng-container>
+     
+  
+     <!--card-->
+     <ng-container  matColumnDef="imagen">
+      <th mat-header-cell *matHeaderCellDef  >Imagen </th>
+      <td  mat-cell *matCellDef="let element"> 
+        {{element.imagen}} </td>
+        
+    </ng-container>
+  
+  <!--card-->
+  
+
+    <!-- Name Column -->
+    <ng-container  matColumnDef="referencia">
+      <th mat-header-cell *matHeaderCellDef>referencia</th>
+      <td  mat-cell *matCellDef="let element"> 
+        {{element.referencia}} </td>
+      
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Cantidad">
+      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+      <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+    </ng-container>
+  
+<!--talla-->
+
+<ng-container matColumnDef="talla">
+  <th mat-header-cell *matHeaderCellDef>talla</th>
+  <td mat-cell *matCellDef="let element"> {{element.talla}} </td>
+</ng-container>
+
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="fechaIngreso">
+      <th mat-header-cell *matHeaderCellDef> FechaIngreso </th>
+      <td mat-cell *matCellDef="let element"> {{element.fechaDeIngreso | date:'dd/mm/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element;let i=index"> {{element.Acciones}} 
+        <a class="pointer" routerLink="/agregar/{{i}}" style="color: blue;">
+          <mat-icon>edit</mat-icon>
+        </a>
+  
+        <a (click)=eliminarArticulo(i) class="pointer" style="color:orange ;" >
+          <mat-icon>delete</mat-icon>
+        </a>
+
+      </td>
+
+    
+    </ng-container >
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> 
+</div>
+  
+  <mat-paginator  [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+
